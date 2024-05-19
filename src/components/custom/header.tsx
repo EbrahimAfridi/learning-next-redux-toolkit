@@ -6,12 +6,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import Link from "next/link";
+import { Phone, ShoppingBasket } from "lucide-react";
+import { Button } from "../ui/button";
 
 
 const Header = () => {
   return (
     <header className="bg-white">
-      <nav className="container py-5">
+      <nav className="py-5 container px-44 flex justify-between">
         <div className="flex items-center space-x-4">
           <svg
             data-testid="logo"
@@ -34,7 +37,7 @@ const Header = () => {
             />
           </svg>
           <Select>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-[140px] h-9">
               <SelectValue placeholder="Select Store" />
             </SelectTrigger>
             <SelectContent>
@@ -43,6 +46,36 @@ const Header = () => {
               <SelectItem value="system">Lapinos</SelectItem>
             </SelectContent>
           </Select>
+        </div>
+        <div className="flex items-center gap-x-4">
+          <ul className="flex items-center text-md font-medium space-x-4">
+            <li>
+              <Link href={"/"} className="hover:text-primary">
+                Menu
+              </Link>
+            </li>
+            <li>
+              <Link href={"/"} className="hover:text-primary">
+                Orders
+              </Link>
+            </li>
+          </ul>
+          <div className="relative">
+            <Link href={"/cart"} className="hover:text-primary">
+              <ShoppingBasket />
+            </Link>
+            <span
+              className="absolute -top-4 -right-5 h-6 w-6 flex items-center justify-center 
+            rounded-full bg-orange-600 font-bold text-white"
+            >
+              3
+            </span>
+          </div>
+          <div className="flex items-center gap-x-2 ml-12">
+            <Phone />
+            <span>+91 8852985034</span>
+          </div>
+          <Button size={"sm"}>Logout</Button>
         </div>
       </nav>
     </header>
