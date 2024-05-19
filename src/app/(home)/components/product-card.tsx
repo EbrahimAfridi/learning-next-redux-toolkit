@@ -9,14 +9,11 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { ShoppingCart } from "lucide-react";
 
 export type Product = {
   id: string;
@@ -59,7 +56,7 @@ const ProductCard = ({ product }: PropTypes) => {
               Choose
             </DialogTrigger>
             <DialogContent className="max-w-3xl p-0">
-              <div className="flex p-8">
+              <div className="flex">
                 <div className="w-1/3 bg-white rounded p-8 flex items-center justify-center">
                   <Image
                     src={"/pizza-main.png"}
@@ -68,7 +65,7 @@ const ProductCard = ({ product }: PropTypes) => {
                     height={380}
                   />
                 </div>
-                <div className="w-2/3">
+                <div className="w-2/3 p-8">
                   <h3 className="text-xl font-bold">{product.name}</h3>
                   <p className="mt-1">{product.description}</p>
                   <div>
@@ -162,6 +159,14 @@ const ProductCard = ({ product }: PropTypes) => {
                     </RadioGroup>
                   </div>
                   <ToppingList />
+
+                  <div className="flex items-center justify-between mt-12">
+                    <span className="font-bold">&#8377;{product.price}</span>
+                    <Button>
+                      <ShoppingCart size={20}/>
+                      <span className="ml-2">Add to cart</span>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </DialogContent>
