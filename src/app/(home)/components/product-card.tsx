@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
@@ -14,6 +15,8 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
+import { useAppDispatch } from "@/lib/store/hooks";
+import { add } from "@/lib/store/features/cart/cartSlice";
 
 export type Product = {
   id: string;
@@ -28,6 +31,12 @@ type PropTypes = {
 };
 
 const ProductCard = ({ product }: PropTypes) => {
+  const dispatch = useAppDispatch();
+
+  function handleAddToCart(id: string) {
+    dispatch(add(id));
+  }
+
   return (
     <div>
       <Card className="border-none rounded-xl">
@@ -48,7 +57,12 @@ const ProductCard = ({ product }: PropTypes) => {
             <span>From </span>
             <span className="font-bold">₹{product.price}</span>
           </p>
-          <Dialog>
+
+          <Button variant={'ghost'} size={'sm'} onClick={() => handleAddToCart(product.id)}>
+            Add to cart
+          </Button>
+
+          {/* <Dialog>
             <DialogTrigger
               className="bg-orange-200 hover:bg-orange-300 text-orange-500 px-6 py-2 
             rounded-full shadow hover:shadow-lg outline-none focus:outline-none ease-liner trasnsition-all duration-150"
@@ -170,7 +184,7 @@ const ProductCard = ({ product }: PropTypes) => {
                 </div>
               </div>
             </DialogContent>
-          </Dialog>
+          </Dialog> */}
         </CardFooter>
       </Card>
     </div>

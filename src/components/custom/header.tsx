@@ -9,6 +9,7 @@ import {
 import Link from "next/link";
 import { Phone, ShoppingBasket } from "lucide-react";
 import { Button } from "../ui/button";
+import AddToCartButton from "./addToCartButton";
 
 
 const Header = () => {
@@ -60,17 +61,7 @@ const Header = () => {
               </Link>
             </li>
           </ul>
-          <div className="relative">
-            <Link href={"/cart"} className="hover:text-primary">
-              <ShoppingBasket />
-            </Link>
-            <span
-              className="absolute -top-4 -right-5 h-6 w-6 flex items-center justify-center 
-            rounded-full bg-orange-600 font-bold text-white"
-            >
-              3
-            </span>
-          </div>
+          <AddToCartButton />
           <div className="flex items-center gap-x-2 ml-12">
             <Phone />
             <span>+91 8852985034</span>

@@ -3,6 +3,8 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/custom/header";
+import { Store } from "lucide-react";
+import StoreProvider from "./StoreProvider";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -27,8 +29,10 @@ export default function RootLayout({
           manrope.variable
         )}
       >
+        <StoreProvider>
         <Header/>
         <main>{children}</main>
+        </StoreProvider>
       </body>
     </html>
   );
